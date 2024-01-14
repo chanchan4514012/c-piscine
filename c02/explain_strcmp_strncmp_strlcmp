@@ -1,0 +1,22 @@
+/*ทั้งหมดนี้เป็นฟังก์ชันที่ใช้ในภาษา C เพื่อทำการคัดลอกสตริง (strings) จากที่หนึ่งไปยังที่หนึ่ง โดยมีบางความแตกต่างที่สำคัญ:
+
+strcpy (String Copy):
+
+การใช้งาน: strcpy(destination, source);
+คำอธิบาย: ฟังก์ชัน strcpy นี้ทำหน้าที่คัดลอกสตริง source ไปยัง destination. การทำงานจะดำเนินการไปจนถึงตัวอักษร null ('\0') 
+ที่สิ้นสุดสตริง และมั่นใจว่า destination มีขนาดเพียงพอที่จะรับสตริง source.
+strncpy (String Copy with Number of Characters):
+
+การใช้งาน: strncpy(destination, source, n);
+คำอธิบาย: ฟังก์ชัน strncpy ทำงานเช่นเดียวกับ strcpy แต่มีการระบุจำนวนตัวอักษรที่จะถูกคัดลอกโดยใช้พารามิเตอร์ n. 
+จะคัดลอกไปเรื่อย ๆ จนถึง n ตัวอักษร หรือจนกว่าจะพบตัวอักษร null ที่สิ้นสุดสตริง source.
+strlcpy (String Copy with Size Limit):
+
+การใช้งาน: size_t strlcpy(char *destination, const char *source, size_t size);
+คำอธิบาย: strlcpy นับจำนวนตัวอักษรทั้งหมดใน source และกำหนดค่านั้นไว้ที่ size - 1 ถ้า size มีค่ามากกว่า 0. 
+จากนั้นจะคัดลอกสตริง source ไปยัง destination จนถึงตัวอักษร null ที่สิ้นสุดสตริง source 
+หรือจนกว่าจะครบจำนวนที่กำหนดไว้ใน size. 
+strlcpy มั่นใจว่า destination จะมีขนาดเพียงพอที่จะรับสตริง source และเพื่อป้องกัน buffer overflow.
+
+การเลือกใช้ฟังก์ชันใดขึ้นอยู่กับการจัดการหน่วยความจำและการควบคุมขอบเขตของข้อมูลที่คุณต้องการคัดลอก. 
+strncpy และ strlcpy นั้นมักถูกนำมาใช้เพื่อป้องกันปัญหา buffer overflow ที่อาจเกิดขึ้นในการใช้ strcpy.*/
