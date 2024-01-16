@@ -1,30 +1,44 @@
-#include <string.h>
 #include <stdio.h>
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	int i;
-	int j;
+	char	*str_ptr;
+	char	*to_find_ptr;
 
-	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i])
+	while (*str)
 	{
-		j = 0;
-		while (str[i + j] == to_find[j] && str[i + j])
+		str_ptr = str;
+		to_find_ptr = to_find;
+		while (*str_ptr && *to_find_ptr && *str_ptr == *to_find_ptr)
 		{
-			if (to_find[j + 1] == '\0')
-				return (&str[i]);
-			j++;
+			str_ptr++;
+			to_find_ptr++;
 		}
-		i++;
+		if (!*to_find_ptr)
+		{
+			return (str);
+		}
+		str++;
 	}
 	return (0);
 }
-int main()
-{
-    char c[] = "01240000235";
-    char b[] = "23";
-    printf("%s",ft_strstr(c,b));
+
+int main() {
+    char str1[] = "Hello, World!";
+    char to_find1[] = "World";
+    char *result1 = ft_strstr(str1, to_find1);
+
+    char str2[] = "This is a test.";
+    char to_find2[] = "is";
+    char *result2 = ft_strstr(str2, to_find2);
+
+    char str3[] = "No match here.";
+    char to_find3[] = "notfound";
+    char *result3 = ft_strstr(str3, to_find3);
+
+    printf("Test 1: %s\n", result1);
+    printf("Test 2: %s\n", result2);
+    printf("Test 3: %s\n", result3);
+
+    return 0;
 }
